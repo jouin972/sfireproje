@@ -9,7 +9,7 @@
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "ng build --prod && ng run frontend:server:production",
-    "ssr:deploy":"bash scripts/deploy.sh"
+    "ssr:deploy": "bash scripts/deploy.sh"
   },
   "private": true,
   "dependencies": {
