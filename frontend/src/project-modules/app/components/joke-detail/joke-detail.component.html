@@ -1,0 +1,39 @@
+<div *ngIf="loading" fxFlex fxLayoutAlign="center center" class="loader-wrapper">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading">
+    <div fxLayout="row" fxLayoutAlign="center center" [style.marginBottom.px]="20">
+        <mat-card fxFlex="80" fxFlex.xs="100">
+            <img class="detail-card-image" mat-card-image [src]="joke.image" alt="Photo of a Shiba Inu">
+            <mat-card-header>
+                <mat-card-subtitle>Type: {{joke.type | titlecase}}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p><strong>Setup: </strong> {{joke.setup}}<br>
+                    <strong>Punchline: </strong> {{joke.punchline}} </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around space-around"
+        [style.marginBottom.px]="20">
+        <div *ngFor="let joke of jokesList | random4Jokes" fxFlex="24" fxFlex.xs="100">
+            <mat-card class="card-wrapper">
+                <img class="card-image" mat-card-image [src]="joke.image" alt="Photo of a Shiba Inu">
+                <mat-card-header>
+                    <mat-card-subtitle>{{joke.type | titlecase}}</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <p> {{joke.setup | resizeText}} </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="viewFullJoke(joke.id)">VIEW FULL</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="goToListPage()">Return to List Page</button>
+    </div>
+</div>

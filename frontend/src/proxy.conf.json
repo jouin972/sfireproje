@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://joke-api-strict-cors.appspot.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

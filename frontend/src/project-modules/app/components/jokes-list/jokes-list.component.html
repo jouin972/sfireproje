@@ -1,0 +1,99 @@
+<div
+  *ngIf="loading"
+  fxFlex
+  fxLayoutAlign="center center"
+  class="loader-wrapper"
+>
+  <mat-spinner></mat-spinner>
+</div>
+<div
+  *ngIf="!loading && currentPage === GC.LIST_PAGE"
+  fxFlexFill
+  fxLayout="column"
+>
+  <div
+    fxFlexFill
+    fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-around space-around"
+  >
+    <div *ngFor="let joke of renderingJokesList" fxFlex="24" fxFlex.xs="100">
+      <!-- <div *ngFor="let joke of renderingJokesList | search:searchString" fxFlex="24" fxFlex.xs="100"> -->
+      <mat-card class="card-wrapper">
+        <img
+          class="card-image"
+          mat-card-image
+          [src]="joke.image"
+          alt="Photo of a Shiba Inu"
+        />
+        <mat-card-header>
+          <mat-card-subtitle>{{ joke.type | titlecase }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{ joke.setup | resizeText }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="viewFullJoke(joke.id)"
+          >
+            VIEW FULL
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div
+    *ngIf="renderingJokesList.length > 0"
+    fxLayout="row wrap"
+    fxFlex
+    fxLayoutAlign="center center"
+    fxLayoutGap="20px"
+    class="action-buttons"
+  >
+    <button
+      *ngIf="pagesLoaded.length > 1"
+      [disabled]="currentPageNumber === 1"
+      mat-raised-button
+      color="primary"
+      (click)="loadPreviousPage()"
+    >
+      Previous Page
+    </button>
+    <ng-container *ngIf="pagesLoaded.length > 1">
+      <button
+        *ngFor="let page of pagesLoaded"
+        mat-raised-button
+        [color]="currentPageNumber === page ? 'primary' : ''"
+        (click)="loadPreviousPage(page)"
+      >
+        {{ page }}
+      </button>
+    </ng-container>
+    <button
+      [disabled]="searchActivated && pagesLoaded.length == currentPageNumber"
+      mat-raised-button
+      color="primary"
+      (click)="loadMoreJokes()"
+    >
+      Next Page
+    </button>
+  </div>
+  <div
+    *ngIf="renderingJokesList.length == 0"
+    fxLayout="row"
+    fxFlex
+    fxLayoutAlign="center center"
+  >
+    <p>No results to show</p>
+  </div>
+</div>
+<app-joke-detail
+  fxFlex
+  *ngIf="!loading && currentPage === GC.DETAIL_PAGE"
+  [jokesList]="renderingJokesList"
+  [joke]="joke"
+  (showListPage)="showListPage()"
+></app-joke-detail>

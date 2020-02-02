@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: whitesmoke;
+}
+
+.loader-wrapper {
+  min-height: calc(100vh - 90px);
+  background-color: #eaeaea;
+  border-radius: 5px;
+}
+
+.card-wrapper {
+  min-height: 300px;
+  margin-bottom: 20px;
+}
+
+.card-image {
+  height: 225px;
+}
