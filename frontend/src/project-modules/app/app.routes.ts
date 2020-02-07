@@ -6,6 +6,7 @@ import { JokesListComponent, JokeDetailComponent } from './components';
 const routes: Routes = [
   { path: '', component: JokesListComponent },
   { path: 'detail/:id', component: JokeDetailComponent },
+  { path: 'moduleB', loadChildren: './components/examplemodule/examplemodule.module#ExamplemoduleModule' },
   { path: '**', redirectTo: '' }
 ];
 
