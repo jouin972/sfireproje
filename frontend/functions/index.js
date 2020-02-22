@@ -11,8 +11,11 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = path.join(process.cwd(), 'dist');
 const routes = [
-  { path: '/*', view: 'index', bundle: require('./dist/server/main') }
+  { path: '/es/*', view: 'es/index', bundle: require('./dist/server/es/main') },
+  { path: '/hi/*', view: 'hi/index', bundle: require('./dist/server/hi/main') },
+  { path: '/*', view: 'en/index', bundle: require('./dist/server/en/main') }
 ];
+
 // Load your engine
 app.engine('html', (filePath, options, callback) => {
   options.engine(filePath, { req: options.req, res: options.res }, callback);

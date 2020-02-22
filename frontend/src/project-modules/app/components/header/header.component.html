@@ -1,22 +1,36 @@
 <div class="header">
-    <mat-toolbar>
-        <div fxLayout="row" fxFlexFill>
-            <div fxFlex="20" fxLayoutAlign="start center" fxLayoutGap="10px">
-                <img class="logo" (click)="goToHomePage()" src="assets/images/logo.png">
-                <h3 class="app-title" (click)="goToHomePage()">{{appTitle}}</h3>
-            </div>
-            <div fxFlex="80" fxLayoutAlign="center center" fxLayoutAlign.xs="end center">
-                <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="80">
-                    <input matInput [(ngModel)]="searchInput">
-                    <button mat-icon-button matSuffix (click)="searchJoke(searchInput)">
-                        <mat-icon>search</mat-icon>
-                    </button>
-                </mat-form-field>
-            </div>
-            <div fxFlex="20" fxHide.xs fxLayoutAlign="end center" fxLayoutGap="10px">
-                <img class="profile-photo" src="assets/images/user.png">
-                <span>Welcom John</span>
-            </div>
-        </div>
-    </mat-toolbar>
+  <mat-toolbar>
+    <div fxLayout="row" fxFlexFill>
+      <div fxFlex="20" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <img
+          class="logo"
+          (click)="goToHomePage()"
+          src="assets/images/logo.png"
+        />
+        <h3 class="app-title" (click)="goToHomePage()">{{ appTitle }}</h3>
+      </div>
+      <div
+        fxFlex="80"
+        fxLayoutAlign="center center"
+        fxLayoutAlign.xs="end center"
+      >
+        <mat-form-field appearance="fill" fxFlex="50" fxFlex.xs="80">
+          <input matInput [(ngModel)]="searchInput" />
+          <button mat-icon-button matSuffix (click)="searchJoke(searchInput)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div fxFlex="20" fxHide.xs fxLayoutAlign="end center" fxLayoutGap="10px">
+        <a class="lang-option" [href]="'/en/'">English</a>
+        <a class="lang-option" [href]="'/es/'">Español</a>
+        <a class="lang-option" [href]="'/hi/'">हिंदी</a>
+      </div>
+
+      <div fxFlex="20" fxHide.xs fxLayoutAlign="end center" fxLayoutGap="10px">
+        <img class="profile-photo" src="assets/images/user.png" />
+        <span i18n="@@name">Welcom John</span>
+      </div>
+    </div>
+  </mat-toolbar>
 </div>

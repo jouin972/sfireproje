@@ -9,6 +9,16 @@ import {
   BrowserTransferStateModule
 } from '@angular/platform-browser';
 import { TransferHttpCacheModule } from '@nguniversal/common';
+
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import localEn from '@angular/common/locales/en';
+import localHi from '@angular/common/locales/hi';
+
+registerLocaleData(localeEs, 'es');
+registerLocaleData(localEn, 'en');
+registerLocaleData(localHi, 'es');
+
 @NgModule({
   declarations: [__DECLARATIONS],
   imports: [
